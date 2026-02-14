@@ -51,22 +51,48 @@
  *   convertToString(42)                   // => "42"
  *   stringToChars("Dak")                  // => ["D", "a", "k"]
  */
+
+/*   stringToChars(str)
+ *      - Array.from() se string ko characters ki array mein convert karo
+ *      - Agar str string nahi hai, return []
+ *      - Example: stringToChars("Dak") => ["D", "a", "k"]
+ *      - Example: stringToChars("") => [] */
+
 export function parcelToJSON(parcel) {
-  // Your code here
+  if (parcel === undefined) {
+    return "";
+  }
+  try {
+    const parsed = JSON.stringify(parcel);
+    return parsed;
+  } catch (err) {
+    return "";
+  }
 }
 
 export function jsonToParcel(jsonString) {
-  // Your code here
+  if (typeof jsonString !== "string") {
+    return null;
+  }
+  try {
+    return JSON.parse(jsonString);
+  } catch (err) {
+    return null;
+  }
 }
 
 export function convertToString(value) {
-  // Your code here
+  return String(value);
 }
 
 export function convertToNumber(value) {
-  // Your code here
+  const result = Number(value);
+  return result === NaN ? NaN : result;
 }
 
 export function stringToChars(str) {
-  // Your code here
+  if (typeof str !== "string") {
+    return [];
+  }
+  return Array.from(str);
 }
